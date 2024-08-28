@@ -12,6 +12,10 @@
     home = "/Users/samsimpson";
   };
 
+  environment.systemPackages = with pkgs; [
+    cyberduck
+  ];
+
   homebrew = {
     enable = true;
     brewPrefix = "/opt/homebrew/bin";

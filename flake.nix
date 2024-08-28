@@ -16,13 +16,13 @@
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
       modules = [
-        ./system-configuration.nix
+        ./personal/system-configuration.nix
         home-manager.darwinModules.home-manager {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
 
-            users.samsimpson.imports = [ ./home-manager.nix ];
+            users.samsimpson.imports = [ ./personal/home-manager.nix ];
           };
         }
       ];
