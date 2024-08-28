@@ -15,9 +15,6 @@
   programs.zsh.enable = true;  # default shell on catalina
   # programs.fish.enable = true;
 
-  # Set Git commit hash for darwin-version.
-  system.configurationRevision = self.rev or self.dirtyRev or null;
-
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
@@ -26,12 +23,17 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config = { allowUnfree = true; };
 
+  users.users.samsimpson = {
+    name = "samsimpson";
+    home = "/Users/samsimpson";
+  };
+
   homebrew = {
     brewPrefix = "/opt/homebrew/bin";
     enable = true;
     casks = [
       { name = "firefox"; greedy = true; }
-      { name = "1password"; greedy = true; }
+      { name = "1password@beta"; greedy = true; }
       { name = "obsidian"; greedy = true; }
       { name = "wezterm"; greedy = true; }
     ];
