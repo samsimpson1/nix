@@ -19,6 +19,7 @@
   homebrew = {
     enable = true;
     brewPrefix = "/opt/homebrew/bin";
+    onActivation.autoUpdate = true;
 
     casks = [
       { name = "1password"; greedy = true; }
@@ -27,6 +28,7 @@
       { name = "makemkv"; greedy = true; }
       { name = "wezterm"; greedy = true; }
       { name = "sonic-pi"; greedy = true; }
+      { name = "stremio"; greedy = true; }
     ];
   };
 }
