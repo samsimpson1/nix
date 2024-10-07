@@ -42,6 +42,22 @@
 (use-package terraform-mode
   :straight t)
 
+(use-package company
+  :straight t)
+
+(add-hook 'after-init-hook 'global-company-mode)
+
+(use-package lsp-mode
+  :straight t
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (
+	 (terraform-mode . lsp))
+  :commands lsp)
+
+(setq lsp-disabled-clients '(tfls))
+(setq lsp-terraform-ls-server "@tfls@/bin/terraform-ls")
+
 (if window-system
     (tool-bar-mode -1))
 

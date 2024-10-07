@@ -19,11 +19,12 @@ in
       python3
       awsumePlugins
       rbenv
+      tenvs
     ];
 
     file.".awsume/config.yaml".source = ./config/awsume.yaml;
 
-    file.".emacs.d/init.el".source = ../shared/emacs.el;
+    file.".emacs.d/init.el".source = pkgs.substituteAll { src = ../shared/emacs.el; tfls = pkgs.terraform-ls; };
 
     stateVersion = "24.05";
   };
