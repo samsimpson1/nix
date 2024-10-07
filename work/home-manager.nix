@@ -11,6 +11,7 @@ in
 
     packages = with pkgs; [
       act
+      emacs
       kubectl
       kubectx
       kubernetes-helm
@@ -21,6 +22,8 @@ in
     ];
 
     file.".awsume/config.yaml".source = ./config/awsume.yaml;
+
+    file.".emacs.d/init.el".source = ../shared/emacs.el;
 
     stateVersion = "24.05";
   };
