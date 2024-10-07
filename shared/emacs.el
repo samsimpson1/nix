@@ -56,9 +56,15 @@
   :commands lsp)
 
 (setq lsp-disabled-clients '(tfls))
+
 (setq lsp-terraform-ls-server "@tfls@/bin/terraform-ls")
+
+(use-package magit
+  :straight t)
 
 (if window-system
     (tool-bar-mode -1))
 
 (setq cursor-type 'bar)
+
+(global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#")))
