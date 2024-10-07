@@ -9,7 +9,7 @@
       emacs
     ];
 
-    file.".emacs.d/init.el".source = ../shared/emacs.el;
+    file.".emacs.d/init.el".source = import ../shared/emacs.nix { inherit pkgs; };
 
     stateVersion = "24.05";
   };
