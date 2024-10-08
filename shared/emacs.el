@@ -14,6 +14,12 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+(use-package exec-path-from-shell
+  :straight t
+  :commands exec-path-from-shell-initialize
+  :config
+  (exec-path-from-shell-initialize))
+
 (use-package nix-mode
   :straight t
   :mode "\\.nix\\'")
