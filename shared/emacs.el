@@ -68,3 +68,7 @@
 (setq cursor-type 'bar)
 
 (global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#")))
+
+(add-to-list 'auto-mode-alist '("\\.json.tpl\\'" . js-mode))
+
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
