@@ -19,6 +19,7 @@ in
       python3
       awsumePlugins
       rbenv
+      pre-commit
       tenv
     ];
 
