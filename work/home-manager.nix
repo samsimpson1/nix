@@ -11,6 +11,7 @@ in
 
     packages = with pkgs; [
       act
+      bash
       emacs
       kubectl
       kubectx
