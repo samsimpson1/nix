@@ -26,6 +26,8 @@ in
 
     file.".awsume/config.yaml".source = ./config/awsume.yaml;
 
+    file.".wezterm.lua".source = ./config/wezterm.lua;
+
     file.".emacs.d/init.el".source = import ../shared/emacs.nix { inherit pkgs; };
 
     stateVersion = "24.05";
@@ -52,6 +54,8 @@ in
         kubectx "''${1}"
         kubens apps
         export GOVUK_ENV="''${1}"
+        encoded_env=$(echo -n "''$GOVUK_ENV" | base64)
+        printf "\033]1337;SetUserVar=govuk_env=''${encoded_env}\007"
       }
 
       export EDITOR="${pkgs.vim}/bin/vim"
@@ -59,7 +63,7 @@ in
     };
 
     starship = {
-      enable = true;
+      enable = false;
       enableZshIntegration = true;
 
       settings = {
