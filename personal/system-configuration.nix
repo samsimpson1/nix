@@ -37,6 +37,7 @@
       { name = "sonic-pi"; greedy = true; }
       { name = "stremio"; greedy = true; }
       { name = "vivaldi"; greedy = true; }
+      { name = "podman-desktop"; greedy = true; }
     ];
   };
 }

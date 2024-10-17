@@ -8,6 +8,7 @@
       crystal
       crystalline
       emacs
+      gh
     ];
 
     file.".emacs.d/init.el".source = import ../shared/emacs.nix { inherit pkgs; };
@@ -19,8 +20,8 @@
     zsh = {
       enable = true;
       initExtra = ''
-      $(rbenv init -)
+      eval "$(rbenv init - --no-rehash zsh)"
       '';
-    }
-  }
+    };
+  };
 }
