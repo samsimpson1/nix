@@ -23,6 +23,11 @@
     brewPrefix = "/opt/homebrew/bin";
     onActivation.autoUpdate = true;
 
+    brews = [
+      { name = "rbenv"; }
+      { name = "ruby-build"; }
+    ];
+
     casks = [
       { name = "1password"; greedy = true; }
       { name = "obsidian"; greedy = true; }

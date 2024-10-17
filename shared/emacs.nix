@@ -1,2 +1,6 @@
 {pkgs}:
-pkgs.substituteAll { src = ./emacs.el; tfls = pkgs.terraform-ls; }
+pkgs.substituteAll {
+  src = ./emacs.el;
+  tfls = pkgs.terraform-ls;
+  crystalls = pkgs.crystalline;
+}

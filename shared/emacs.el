@@ -24,6 +24,9 @@
   :straight t
   :mode "\\.nix\\'")
 
+(use-package crystal-mode
+  :straight t)
+
 (use-package all-the-icons
   :straight t)
 
@@ -58,12 +61,14 @@
   :init
   (setq lsp-keymap-prefix "C-c l")
   :hook (
-	 (terraform-mode . lsp))
+	 (terraform-mode . lsp)
+	 (crystal-mode . lsp))
   :commands lsp)
 
 (setq lsp-disabled-clients '(tfls))
 
 (setq lsp-terraform-ls-server "@tfls@/bin/terraform-ls")
+; (setq lsp-clients-crystal-executable '("@crystalls@/bin/crystalline" "--stdio"))
 
 (use-package magit
   :straight t)

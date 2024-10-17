@@ -6,6 +6,7 @@
 
     packages = with pkgs; [
       crystal
+      crystalline
       emacs
     ];
 
@@ -13,4 +14,13 @@
 
     stateVersion = "24.05";
   };
+
+  programs = {
+    zsh = {
+      enable = true;
+      initExtra = ''
+      $(rbenv init -)
+      '';
+    }
+  }
 }
