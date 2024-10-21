@@ -43,4 +43,9 @@ local config = {}
 
 config.use_fancy_tab_bar = false
 
+config.keys = {
+  {key="LeftArrow", mods="OPT", action=wezterm.action({SendString="\x1bb"})},
+  {key="RightArrow", mods="OPT", action=wezterm.action({SendString="\x1bf"})}
+}
+
 return config
