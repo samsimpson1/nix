@@ -43,6 +43,10 @@ in
       shellAliases = {
         c = "awsume -c";
         k = "kubectl";
+        gan = "git commit --amend --no-edit";
+        gpf = "git push --force-with-lease";
+        gp = "git push";
+        gpm = " git pull origin main";
       };
 
       initExtra = ''
