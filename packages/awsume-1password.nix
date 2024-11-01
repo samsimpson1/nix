@@ -1,4 +1,4 @@
-{ lib, python3Packages, fetchPypi, _1password }:
+{ lib, python3Packages, fetchPypi, _1password-cli }:
 
 python3Packages.buildPythonApplication rec {
   pname = "awsume-1password-gaiden";
@@ -9,7 +9,7 @@ python3Packages.buildPythonApplication rec {
     sha256 = "sha256-pBwKIbH8HbIkssUSUJpgjcpIDjnlIOVx3zp4LiK1GuU=";
   };
 
-  dependencies = [ _1password ];
+  dependencies = [ _1password-cli ];
 
   meta = with lib; {
     description = "1Password plugin for awsume";
