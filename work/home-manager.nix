@@ -63,6 +63,8 @@ in
       }
 
       export EDITOR="${pkgs.vim}/bin/vim"
+
+      eval "$(rbenv init - --no-rehash zsh)"
       '';
     };
 
