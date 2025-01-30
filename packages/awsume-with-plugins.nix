@@ -16,13 +16,13 @@ let
 in
 python3Packages.buildPythonApplication rec {
   pname = "awsume";
-  version = "4.5.3";
+  version = "4.5.5";
 
   src = fetchFromGitHub {
     owner = "trek10inc";
     repo = "awsume";
     rev = version;
-    sha256 = "sha256-An7omHk2Yxjc6db6Y8QSrtgUvSF5rlVhgxMTpNOePHo=";
+    sha256 = "sha256-lm9YANYckyHDoNbB1wytBm55iyBmUuxFPmZupfpReqc=";
   };
 
   AWSUME_SKIP_ALIAS_SETUP = 1;
