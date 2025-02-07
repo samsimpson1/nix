@@ -22,6 +22,7 @@ in
       rbenv
       pre-commit
       tenv
+      podman
     ];
 
     file.".awsume/config.yaml".source = ./config/awsume.yaml;
