@@ -35,6 +35,7 @@
     casks = [
       { name = "firefox"; greedy = true; }
       { name = "1password@beta"; greedy = true; }
+      { name = "podman-desktop"; greedy = true; }
       { name = "obsidian"; greedy = true; }
       { name = "wezterm"; greedy = true; }
     ];
