@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     slack
     vscode
+    squeezelite
   ];
 
   # nix.package = pkgs.nix;
