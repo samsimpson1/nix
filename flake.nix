@@ -23,7 +23,10 @@
             useGlobalPkgs = true;
             useUserPackages = true;
 
-            users.samsimpson.imports = [ ./personal/home-manager.nix ];
+            users.samsimpson.imports = [
+              ./personal/home-manager.nix
+              ./shared/neovim.nix
+            ];
           };
         }
       ];
@@ -40,7 +43,10 @@
             useGlobalPkgs = true;
             useUserPackages = true;
 
-            users.samsimpson.imports = [ ./work/home-manager.nix ];
+            users.samsimpson.imports = [
+              ./work/home-manager.nix
+              ./shared/neovim.nix
+              ];
           };
         }
       ];
