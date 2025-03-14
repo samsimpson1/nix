@@ -6,7 +6,7 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config = { allowUnfree = true; };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   users.users.samsimpson = {
     name = "samsimpson";
