@@ -12,6 +12,11 @@
       }
     }
     '';
+    extraConfig = ''
+    set tabstop=2
+    set shiftwidth=2
+    set expandtab
+    '';
     coc = {
       enable = true;
       settings = {
