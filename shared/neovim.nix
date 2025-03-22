@@ -26,6 +26,8 @@
         end
       end
     })
+
+    vim.api.nvim_create_user_command("T", "below terminal", {})
     '';
     extraConfig = ''
     set tabstop=2
