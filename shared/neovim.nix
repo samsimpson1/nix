@@ -5,6 +5,13 @@
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
     ];
+    extraLuaConfig = ''
+    require'nvim-treesitter.configs'.setup {
+      higlight = {
+        enable = true
+      }
+    }
+    '';
     coc = {
       enable = true;
       settings = {
@@ -20,6 +27,10 @@
               ".terraform.lock.hcl"
             ];
           };
+	  nix = {
+	    command = "${pkgs.nixd}/bin/nixd";
+	    filetypes = ["nix"];
+	  };
         };
       };
     };
