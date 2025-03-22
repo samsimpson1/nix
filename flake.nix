@@ -10,7 +10,7 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, nix-darwin, home-manager }:
+  outputs = { self, nix-darwin, home-manager }:
   {
     # Personal MBP
     darwinConfigurations.Sams-MacBook-Pro = nix-darwin.lib.darwinSystem {
