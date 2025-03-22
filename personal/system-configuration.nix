@@ -20,7 +20,7 @@
   homebrew = {
     enable = true;
     brewPrefix = "/opt/homebrew/bin";
-    onActivation.autoUpdate = true;
+    onActivation.autoUpdate = false;
 
     brews = [
       { name = "rbenv"; }
