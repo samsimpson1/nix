@@ -5,6 +5,7 @@
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
       bufferline-nvim
+      neo-tree-nvim
     ];
     extraLuaConfig = ''
     require('nvim-treesitter.configs').setup {
@@ -14,6 +15,17 @@
     }
 
     require('bufferline').setup{}
+
+    vim.api.nvim_create_augroup("neotree", {})
+    vim.api.nvim_create_autocmd("UiEnter", {
+      desc = "Open Neotree",
+      group = "neotree",
+      callback = function()
+        if vim.fn.argc() == 0 then
+          vim.cmd "Neotree toggle"
+        end
+      end
+    })
     '';
     extraConfig = ''
     set tabstop=2
