@@ -4,13 +4,16 @@
     enable = true;
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
+      bufferline-nvim
     ];
     extraLuaConfig = ''
-    require'nvim-treesitter.configs'.setup {
+    require('nvim-treesitter.configs').setup {
       higlight = {
         enable = true
       }
     }
+
+    require('bufferline').setup{}
     '';
     extraConfig = ''
     set tabstop=2
