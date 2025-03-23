@@ -37,6 +37,7 @@
       { name = "stremio"; greedy = true; }
       { name = "vivaldi"; greedy = true; }
       { name = "podman-desktop"; greedy = true; }
+      { name = "ghostty"; greedy = true; }
     ];
   };
 }
