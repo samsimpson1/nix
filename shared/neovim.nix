@@ -10,6 +10,13 @@
       neo-tree-nvim
       gitsigns-nvim
       telescope-nvim
+      nvim-web-devicons
+      {
+        plugin = catppuccin-nvim;
+        config = ''
+	      colorscheme catppuccin-mocha
+	      '';
+      }
     ];
 
     # required by telescope
