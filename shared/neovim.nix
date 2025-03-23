@@ -110,6 +110,16 @@
               "py"
             ];
           };
+          ruby = {
+            command = "${pkgs.ruby-lsp}/bin/ruby-lsp";
+            filetypes = [
+              "rb"
+            ];
+            rootPatterns = [
+              "Gemfile"
+              "Gemfile.lock"
+            ];
+          };
         };
       };
     };
