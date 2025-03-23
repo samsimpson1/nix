@@ -14,7 +14,11 @@
       }
     }
 
-    require('bufferline').setup{}
+    require('bufferline').setup {
+      options = {
+        diagnostics = "coc"
+      }
+    }
 
     vim.api.nvim_create_augroup("neotree", {})
     vim.api.nvim_create_autocmd("UiEnter", {
@@ -49,10 +53,10 @@
               ".terraform.lock.hcl"
             ];
           };
-	  nix = {
-	    command = "${pkgs.nixd}/bin/nixd";
-	    filetypes = ["nix"];
-	  };
+	        nix = {
+	          command = "${pkgs.nixd}/bin/nixd";
+	          filetypes = ["nix"];
+	        };
         };
       };
     };
