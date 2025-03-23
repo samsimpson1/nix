@@ -1,4 +1,4 @@
-{ stdenv, pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -6,6 +6,7 @@
       nvim-treesitter.withAllGrammars
       bufferline-nvim
       neo-tree-nvim
+      gitsigns-nvim
     ];
     extraLuaConfig = ''
     require('nvim-treesitter.configs').setup {
@@ -32,11 +33,15 @@
     })
 
     vim.api.nvim_create_user_command("T", "below terminal", {})
+
+    require("gitsigns").setup()
     '';
     extraConfig = ''
     set tabstop=2
     set shiftwidth=2
     set expandtab
+
+    set number
     '';
     coc = {
       enable = true;
