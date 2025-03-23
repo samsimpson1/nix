@@ -1,4 +1,4 @@
-{ stdenv, pkgs, ... }:
+{ pkgs, ... }:
 {
   home = {
     username = "samsimpson";
