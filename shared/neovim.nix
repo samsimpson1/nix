@@ -1,8 +1,5 @@
 { pkgs, ... }:
 {
-  # required by telescope
-  packages = [ pkgs.ripgrep ];
-
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -14,6 +11,9 @@
       gitsigns-nvim
       telescope-nvim
     ];
+
+    # required by telescope
+    extraPackages = [ pkgs.ripgrep ];
     extraLuaConfig = ''
     require('nvim-treesitter.configs').setup {
       higlight = {
@@ -77,6 +77,30 @@
 	          command = "${pkgs.nixd}/bin/nixd";
 	          filetypes = ["nix"];
 	        };
+          yaml = {
+            command = "${pkgs.yaml-language-server}/bin/yaml-language-server";
+            filetypes = [
+              "yaml"
+              "yml"
+            ];
+          };
+          go = {
+            command = "${pkgs.gopls}/bin/gopls";
+            filetypes = ["go"];
+            rootPatterns = [
+              "go.work"
+              "go.mod"
+            ];
+            initializationOptions = {
+              usePlaceholders = true;
+            };
+          };
+          python = {
+            command = "${pkgs.pylyzer}/bin/pylyzer --server";
+            filetypes = [
+              "py"
+            ];
+          };
         };
       };
     };
