@@ -12,6 +12,9 @@
     require('nvim-treesitter.configs').setup {
       higlight = {
         enable = true
+      },
+      indent = {
+        enable = true
       }
     }
 
