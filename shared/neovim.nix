@@ -64,6 +64,8 @@
     set expandtab
 
     set number
+
+    tnoremap <Esc> <C-\><C-n>
     '';
     coc = {
       enable = true;
