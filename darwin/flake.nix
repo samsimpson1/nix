@@ -25,7 +25,7 @@
 
             users.samsimpson.imports = [
               ./personal/home-manager.nix
-              ./shared/neovim.nix
+              ../shared/neovim.nix
             ];
           };
         }
@@ -45,7 +45,7 @@
 
             users.samsimpson.imports = [
               ./work/home-manager.nix
-              ./shared/neovim.nix
+              ../shared/neovim.nix
               ];
           };
         }
