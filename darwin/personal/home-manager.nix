@@ -11,7 +11,7 @@
       gh
     ];
 
-    file.".emacs.d/init.el".source = import ../shared/emacs.nix { inherit pkgs; };
+    file.".emacs.d/init.el".source = import ../../shared/emacs.nix { inherit pkgs; };
 
     stateVersion = "24.05";
   };

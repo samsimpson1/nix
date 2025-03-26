@@ -29,7 +29,7 @@ in
 
     file.".wezterm.lua".source = ./config/wezterm.lua;
 
-    file.".emacs.d/init.el".source = import ../shared/emacs.nix { inherit pkgs; };
+    file.".emacs.d/init.el".source = import ../../shared/emacs.nix { inherit pkgs; };
 
     stateVersion = "24.05";
   };
