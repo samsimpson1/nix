@@ -5,6 +5,8 @@ let
   awsumePlugins = pkgs.callPackage ../packages/awsume-with-plugins.nix { plugins = [ awsumeOnepassword awsumeConsole ]; };
 in
 {
+  nixpkgs.config = { allowUnfree = true; };
+  
   home = {
     username = "samsimpson";
     homeDirectory = "/Users/samsimpson";

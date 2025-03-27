@@ -20,7 +20,6 @@
         ./personal/system-configuration.nix
         home-manager.darwinModules.home-manager {
           home-manager = {
-            useGlobalPkgs = true;
             useUserPackages = true;
 
             users.samsimpson.imports = [
@@ -40,7 +39,6 @@
         ./work/system-configuration.nix
         home-manager.darwinModules.home-manager {
           home-manager = {
-            useGlobalPkgs = true;
             useUserPackages = true;
 
             users.samsimpson.imports = [

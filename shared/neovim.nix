@@ -1,11 +1,27 @@
 { pkgs, ... }:
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      tree-sitter = prev.tree-sitter.override {
+        extraGrammars = {
+          tree-sitter-terraform = {
+            url = "https://github.com/MichaHoffmann/tree-sitter-hcl";
+            location = "dialects/terraform";
+            rev = "de10d494dbd6b71cdf07a678fecbf404dbfe4398";
+            sha256 = "sha256-oRNNxE5AnI0TyJl92pk0E9xGj5xom/+0kpPMUE/O/TY=";
+            fetchSubmodules = false;
+          };
+        };
+      };
+    })
+  ];
+
   programs.neovim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      nvim-treesitter.withAllGrammars
+      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
       bufferline-nvim
       neo-tree-nvim
       gitsigns-nvim
@@ -23,7 +39,7 @@
     extraPackages = [ pkgs.ripgrep ];
     extraLuaConfig = ''
     require('nvim-treesitter.configs').setup {
-      higlight = {
+      highlight = {
         enable = true
       },
       indent = {
