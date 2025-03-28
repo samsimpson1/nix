@@ -2,11 +2,18 @@
 let
   awsumeOnepassword = pkgs.callPackage ../packages/awsume-1password.nix { };
   awsumeConsole = pkgs.callPackage ../packages/awsume-console.nix { };
-  awsumePlugins = pkgs.callPackage ../packages/awsume-with-plugins.nix { plugins = [ awsumeOnepassword awsumeConsole ]; };
+  awsumePlugins = pkgs.callPackage ../packages/awsume-with-plugins.nix {
+    plugins = [
+      awsumeOnepassword
+      awsumeConsole
+    ];
+  };
 in
 {
-  nixpkgs.config = { allowUnfree = true; };
-  
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   home = {
     username = "samsimpson";
     homeDirectory = "/Users/samsimpson";
@@ -53,21 +60,21 @@ in
       };
 
       initExtra = ''
-      . "$HOME/.cargo/env"
-      alias awsume=". awsume"
+        . "$HOME/.cargo/env"
+        alias awsume=". awsume"
 
-      e() {
-        awsume "''${1}"
-        kubectx "''${1}"
-        kubens apps
-        export GOVUK_ENV="''${1}"
-        encoded_env=$(echo -n "''$GOVUK_ENV" | base64)
-        printf "\033]1337;SetUserVar=govuk_env=''${encoded_env}\007"
-      }
+        e() {
+          awsume "''${1}"
+          kubectx "''${1}"
+          kubens apps
+          export GOVUK_ENV="''${1}"
+          encoded_env=$(echo -n "''$GOVUK_ENV" | base64)
+          printf "\033]1337;SetUserVar=govuk_env=''${encoded_env}\007"
+        }
 
-      export EDITOR="${pkgs.vim}/bin/vim"
+        export EDITOR="${pkgs.vim}/bin/vim"
 
-      eval "$(rbenv init - --no-rehash zsh)"
+        eval "$(rbenv init - --no-rehash zsh)"
       '';
     };
 

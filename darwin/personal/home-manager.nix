@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
-  nixpkgs.config = { allowUnfree = true; };
-  
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   home = {
     username = "samsimpson";
     homeDirectory = "/Users/samsimpson";
@@ -22,7 +24,7 @@
     zsh = {
       enable = true;
       initExtra = ''
-      eval "$(rbenv init - --no-rehash zsh)"
+        eval "$(rbenv init - --no-rehash zsh)"
       '';
     };
   };

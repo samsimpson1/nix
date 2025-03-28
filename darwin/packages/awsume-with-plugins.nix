@@ -1,18 +1,22 @@
-{ lib
-, python3
-, python3Packages
-, installShellFiles
-, fetchFromGitHub
-, plugins ? []
+{
+  lib,
+  python3,
+  python3Packages,
+  installShellFiles,
+  fetchFromGitHub,
+  plugins ? [ ],
 }:
 let
-  awsumeDeps = with python3Packages; [
-    colorama
-    boto3
-    psutil
-    pluggy
-    pyyaml
-  ] ++ plugins;
+  awsumeDeps =
+    with python3Packages;
+    [
+      colorama
+      boto3
+      psutil
+      pluggy
+      pyyaml
+    ]
+    ++ plugins;
 in
 python3Packages.buildPythonApplication rec {
   pname = "awsume";
@@ -44,7 +48,6 @@ python3Packages.buildPythonApplication rec {
 
     rm -f $out/bin/awsume.bat
   '';
-
 
   doCheck = false;
 

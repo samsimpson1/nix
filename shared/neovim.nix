@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+
   nixpkgs.overlays = [
     (final: prev: {
       tree-sitter = prev.tree-sitter.override {
@@ -29,61 +30,61 @@
       nvim-web-devicons
       {
         plugin = catppuccin-nvim;
-        config = ''
-	      colorscheme catppuccin-mocha
-	      '';
+        config = "colorscheme catppuccin-mocha";
       }
     ];
 
-    # required by telescope
-    extraPackages = [ pkgs.ripgrep ];
+    extraPackages = [
+      # required by telescope
+      pkgs.ripgrep
+    ];
     extraLuaConfig = ''
-    require('nvim-treesitter.configs').setup {
-      highlight = {
-        enable = true
-      },
-      indent = {
-        enable = true
+      require('nvim-treesitter.configs').setup {
+        highlight = {
+          enable = true
+        },
+        indent = {
+          enable = true
+        }
       }
-    }
 
-    require('bufferline').setup {
-      options = {
-        diagnostics = "coc"
+      require('bufferline').setup {
+        options = {
+          diagnostics = "coc"
+        }
       }
-    }
 
-    vim.api.nvim_create_augroup("neotree", {})
-    vim.api.nvim_create_autocmd("UiEnter", {
-      desc = "Open Neotree",
-      group = "neotree",
-      callback = function()
-        if vim.fn.argc() == 0 then
-          vim.cmd "Neotree toggle"
+      vim.api.nvim_create_augroup("neotree", {})
+      vim.api.nvim_create_autocmd("UiEnter", {
+        desc = "Open Neotree",
+        group = "neotree",
+        callback = function()
+          if vim.fn.argc() == 0 then
+            vim.cmd "Neotree toggle"
+          end
         end
-      end
-    })
+      })
 
-    vim.api.nvim_create_user_command("T", "below terminal", {})
+      vim.api.nvim_create_user_command("T", "below terminal", {})
 
-    require("gitsigns").setup()
+      require("gitsigns").setup()
 
-    local telescope = require("telescope.builtin")
-    vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "Telescope find files" })
-    vim.keymap.set("n", "<leader>fg", telescope.live_grep, { desc = "Telescope live grep" })
-    vim.keymap.set("n", "<leader>fb", telescope.buffers, { desc = "Telescope buffers" })
-    vim.keymap.set("n", "<leader>fh", telescope.help_tags, { desc = "Telescope help tags" })
+      local telescope = require("telescope.builtin")
+      vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "Telescope find files" })
+      vim.keymap.set("n", "<leader>fg", telescope.live_grep, { desc = "Telescope live grep" })
+      vim.keymap.set("n", "<leader>fb", telescope.buffers, { desc = "Telescope buffers" })
+      vim.keymap.set("n", "<leader>fh", telescope.help_tags, { desc = "Telescope help tags" })
 
-    ${builtins.readFile ./neovim-coc-config.lua}
+      ${builtins.readFile ./neovim-coc-config.lua}
     '';
     extraConfig = ''
-    set tabstop=2
-    set shiftwidth=2
-    set expandtab
+      set tabstop=2
+      set shiftwidth=2
+      set expandtab
 
-    set number
+      set number
 
-    tnoremap <Esc> <C-\><C-n>
+      tnoremap <Esc> <C-\><C-n>
     '';
     coc = {
       enable = true;
@@ -91,7 +92,7 @@
         languageserver = {
           terraform = {
             command = "${pkgs.terraform-ls}/bin/terraform-ls";
-            args = ["serve"];
+            args = [ "serve" ];
             filetypes = [
               "tf"
               "terraform"
@@ -100,10 +101,10 @@
               ".terraform.lock.hcl"
             ];
           };
-	        nix = {
-	          command = "${pkgs.nixd}/bin/nixd";
-	          filetypes = ["nix"];
-	        };
+          nix = {
+            command = "${pkgs.nixd}/bin/nixd";
+            filetypes = [ "nix" ];
+          };
           yaml = {
             command = "${pkgs.yaml-language-server}/bin/yaml-language-server";
             filetypes = [
@@ -113,7 +114,7 @@
           };
           go = {
             command = "${pkgs.gopls}/bin/gopls";
-            filetypes = ["go"];
+            filetypes = [ "go" ];
             rootPatterns = [
               "go.work"
               "go.mod"
