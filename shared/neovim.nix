@@ -84,6 +84,11 @@
         plugin = catppuccin-nvim;
         config = "colorscheme catppuccin-mocha";
       }
+      {
+        plugin = neorg;
+        type = "lua";
+        config = "require('neorg').setup()";
+      }
     ];
 
     extraPackages = [
