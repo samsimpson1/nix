@@ -22,12 +22,64 @@
     viAlias = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
-      bufferline-nvim
-      neo-tree-nvim
-      gitsigns-nvim
-      telescope-nvim
       nvim-web-devicons
+      {
+        plugin = (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars));
+        type = "lua";
+        config = ''
+          require('nvim-treesitter.configs').setup {
+            highlight = {
+              enable = true
+            },
+            indent = {
+              enable = true
+            }
+          }
+        '';
+      }
+      {
+        plugin = bufferline-nvim;
+        type = "lua";
+        config = ''
+          require('bufferline').setup {
+            options = {
+              diagnostics = "coc"
+            }
+          }
+        '';
+      }
+      {
+        plugin = neo-tree-nvim;
+        type = "lua";
+        config = ''
+          vim.api.nvim_create_augroup("neotree", {})
+          vim.api.nvim_create_autocmd("UiEnter", {
+            desc = "Open Neotree",
+            group = "neotree",
+            callback = function()
+              if vim.fn.argc() == 0 then
+                vim.cmd "Neotree toggle"
+              end
+            end
+          })
+        '';
+      }
+      {
+        plugin = gitsigns-nvim;
+        type = "lua";
+        config = "require('gitsigns').setup()";
+      }
+      {
+        plugin = telescope-nvim;
+        type = "lua";
+        config = ''
+          local telescope = require("telescope.builtin")
+          vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "Telescope find files" })
+          vim.keymap.set("n", "<leader>fg", telescope.live_grep, { desc = "Telescope live grep" })
+          vim.keymap.set("n", "<leader>fb", telescope.buffers, { desc = "Telescope buffers" })
+          vim.keymap.set("n", "<leader>fh", telescope.help_tags, { desc = "Telescope help tags" })
+        '';
+      }
       {
         plugin = catppuccin-nvim;
         config = "colorscheme catppuccin-mocha";
@@ -39,41 +91,7 @@
       pkgs.ripgrep
     ];
     extraLuaConfig = ''
-      require('nvim-treesitter.configs').setup {
-        highlight = {
-          enable = true
-        },
-        indent = {
-          enable = true
-        }
-      }
-
-      require('bufferline').setup {
-        options = {
-          diagnostics = "coc"
-        }
-      }
-
-      vim.api.nvim_create_augroup("neotree", {})
-      vim.api.nvim_create_autocmd("UiEnter", {
-        desc = "Open Neotree",
-        group = "neotree",
-        callback = function()
-          if vim.fn.argc() == 0 then
-            vim.cmd "Neotree toggle"
-          end
-        end
-      })
-
       vim.api.nvim_create_user_command("T", "below terminal", {})
-
-      require("gitsigns").setup()
-
-      local telescope = require("telescope.builtin")
-      vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "Telescope find files" })
-      vim.keymap.set("n", "<leader>fg", telescope.live_grep, { desc = "Telescope live grep" })
-      vim.keymap.set("n", "<leader>fb", telescope.buffers, { desc = "Telescope buffers" })
-      vim.keymap.set("n", "<leader>fh", telescope.help_tags, { desc = "Telescope help tags" })
 
       ${builtins.readFile ./neovim-coc-config.lua}
     '';
