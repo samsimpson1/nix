@@ -40,6 +40,12 @@ in
 
     file.".emacs.d/init.el".source = import ../../shared/emacs.nix { inherit pkgs; };
 
+    file."issues/issue.py" = {
+      source = ./issuemaker/issue.py;
+      executable = true;
+    };
+    file."issues/template.md".source = ./issuemaker/template.md;
+
     stateVersion = "24.05";
   };
 
@@ -62,6 +68,8 @@ in
       initExtra = ''
         . "$HOME/.cargo/env"
         alias awsume=". awsume"
+
+        alias issue="$HOME/issues/issue.py"
 
         e() {
           awsume "''${1}"
