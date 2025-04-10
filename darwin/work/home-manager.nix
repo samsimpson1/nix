@@ -32,6 +32,7 @@ in
       pre-commit
       tenv
       podman
+      ripgrep
     ];
 
     file.".awsume/config.yaml".source = ./config/awsume.yaml;
