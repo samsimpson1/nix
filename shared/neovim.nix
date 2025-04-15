@@ -162,6 +162,12 @@
               "Gemfile.lock"
             ];
           };
+          bash = {
+            command = "${pkgs.bash-language-server}/bin/bash-language-server";
+            args = [ "start" ];
+            filetypes = [ "sh" ];
+            ignoredRootPaths = [ "~" ];
+          };
         };
       };
     };
