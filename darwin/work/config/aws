@@ -1,0 +1,41 @@
+[default]
+region = eu-west-1
+
+[profile production-fulladmin]
+role_arn = arn:aws:iam::172025368201:role/sam.simpson-fulladmin
+source_profile = default
+kube_context = arn:aws:eks:eu-west-1:172025368201:cluster/govuk
+
+[profile production-developer]
+role_arn = arn:aws:iam::172025368201:role/sam.simpson-developer
+source_profile = default
+kube_context = arn:aws:eks:eu-west-1:172025368201:cluster/govuk
+
+[profile staging-fulladmin]
+role_arn = arn:aws:iam::696911096973:role/sam.simpson-fulladmin
+source_profile = default
+kube_context = arn:aws:eks:eu-west-1:696911096973:cluster/govuk
+
+[profile staging-developer]
+role_arn = arn:aws:iam::696911096973:role/sam.simpson-developer
+source_profile = default
+kube_context = arn:aws:eks:eu-west-1:172025368201:cluster/govuk
+
+[profile integration-fulladmin]
+role_arn = arn:aws:iam::210287912431:role/sam.simpson-fulladmin
+source_profile = default
+kube_context = arn:aws:eks:eu-west-1:210287912431:cluster/govuk
+
+[profile integration-developer]
+role_arn = arn:aws:iam::210287912431:role/sam.simpson-developer
+source_profile = default
+kube_context = arn:aws:eks:eu-west-1:172025368201:cluster/govuk
+
+[profile test-fulladmin]
+role_arn = arn:aws:iam::430354129336:role/sam.simpson-fulladmin
+source_profile = default
+
+[profile test-developer]
+role_arn = arn:aws:iam::430354129336:role/sam.simpson-developer
+source_profile = default
+kube_context = arn:aws:eks:eu-west-1:172025368201:cluster/govuk

@@ -36,6 +36,7 @@ in
     ];
 
     file.".awsume/config.yaml".source = ./config/awsume.yaml;
+    file.".aws/config".source = ./config/aws;
 
     file.".wezterm.lua".source = ./config/wezterm.lua;
 
@@ -72,13 +73,28 @@ in
 
         alias issue="$HOME/issues/issue.py"
 
-        e() {
-          awsume "''${1}"
-          kubectx "''${1}"
-          kubens apps
-          export GOVUK_ENV="''${1}"
+        govuk_awsume() {
+          ENV_NAME="''${1}"
+          ROLE_NAME="''${2}"
+          ROLE="''${ENV_NAME}-''${ROLE_NAME}"
+
+          awsume "''${ROLE}"
+          if [ "''${ENV_NAME}" != "test" ]; then
+            kubectx "''${1}"
+            kubens apps
+          fi
+
+          export GOVUK_ENV="''${ENV_NAME}"
           encoded_env=$(echo -n "''$GOVUK_ENV" | base64)
           printf "\033]1337;SetUserVar=govuk_env=''${encoded_env}\007"
+        }
+
+        e() {
+          govuk_awsume "''${1}" "developer"
+        }
+
+        ea() {
+          govuk_awsume "''${1}" "fulladmin"
         }
 
         export EDITOR="${pkgs.vim}/bin/vim"
