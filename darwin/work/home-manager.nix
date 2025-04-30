@@ -59,7 +59,6 @@ in
       syntaxHighlighting.enable = true;
 
       shellAliases = {
-        c = "awsume -c";
         k = "kubectl";
         gan = "git commit --amend --no-edit";
         gpf = "git push --force-with-lease";
@@ -72,6 +71,14 @@ in
         alias awsume=". awsume"
 
         alias issue="$HOME/issues/issue.py"
+
+        c() {
+          awsume -c "''${1}-developer"
+        }
+
+        ca() {
+          awsume -c "''${1}-fulladmin"
+        }
 
         govuk_awsume() {
           ENV_NAME="''${1}"
