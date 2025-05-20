@@ -66,7 +66,7 @@ in
         gpm = "git pull origin main";
       };
 
-      initExtra = ''
+      initContent = ''
         . "$HOME/.cargo/env"
         alias awsume=". awsume"
 

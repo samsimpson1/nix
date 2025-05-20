@@ -23,7 +23,7 @@
   programs = {
     zsh = {
       enable = true;
-      initExtra = ''
+      initContent = ''
         eval "$(rbenv init - --no-rehash zsh)"
       '';
     };
