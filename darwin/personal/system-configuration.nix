@@ -11,6 +11,8 @@
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  system.primaryUser = "samsimpson";
+
   users.users.samsimpson = {
     name = "samsimpson";
     home = "/Users/samsimpson";
