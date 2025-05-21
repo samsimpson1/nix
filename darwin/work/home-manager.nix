@@ -80,12 +80,21 @@ in
           awsume -c "''${1}-fulladmin"
         }
 
+        ce() {
+          awsume --role-duration "3600" -c "''${1}-platformengineer"
+        }
+
         govuk_awsume() {
           ENV_NAME="''${1}"
           ROLE_NAME="''${2}"
           ROLE="''${ENV_NAME}-''${ROLE_NAME}"
 
-          awsume "''${ROLE}"
+          ASSUME_DURATION="28800"
+          if [ "''${ROLE_NAME}" = "platformengineer" ]; then
+            ASSUME_DURATION="3600"
+          fi
+
+          awsume --role-duration "''${ASSUME_DURATION}" "''${ROLE}"
           if [ "''${ENV_NAME}" != "test" ]; then
             kubectx "''${1}"
             kubens apps
@@ -102,6 +111,10 @@ in
 
         ea() {
           govuk_awsume "''${1}" "fulladmin"
+        }
+
+        ee() {
+          govuk_awsume "''${1}" "platformengineer"
         }
 
         export EDITOR="${pkgs.vim}/bin/vim"
