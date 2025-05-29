@@ -46,6 +46,10 @@
         greedy = true;
       }
       {
+        name = "megasync";
+        greedy = true;
+      }
+      {
         name = "makemkv";
         greedy = true;
       }
