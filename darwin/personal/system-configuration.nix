@@ -38,7 +38,7 @@
         greedy = true;
       }
       {
-        name = "obsidian";
+        name = "logseq";
         greedy = true;
       }
       {
