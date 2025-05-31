@@ -21,7 +21,6 @@ in
     packages = with pkgs; [
       act
       bash
-      emacs
       kubectl
       kubectx
       kubernetes-helm
@@ -39,8 +38,6 @@ in
     file.".aws/config".source = ./config/aws;
 
     file.".wezterm.lua".source = ./config/wezterm.lua;
-
-    file.".emacs.d/init.el".source = import ../../shared/emacs.nix { inherit pkgs; };
 
     file."issues/issue.py" = {
       source = ./issuemaker/issue.py;
