@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "sam";
@@ -17,7 +20,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -69,6 +72,13 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+  };
+
+  programs.git = {
+    enable = true;
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   # Let Home Manager install and manage itself.
