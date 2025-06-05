@@ -1,5 +1,6 @@
 [default]
 region = eu-west-1
+mfa_serial = arn:aws:iam::622626885786:mfa/sam.simpson@digital.cabinet-office.gov.uk-1pw
 
 [profile production-fulladmin]
 role_arn = arn:aws:iam::172025368201:role/sam.simpson-fulladmin

@@ -1,22 +1,23 @@
 {
-  lib,
+  pkgs,
   python3Packages,
-  fetchPypi,
   _1password-cli,
 }:
 
 python3Packages.buildPythonApplication rec {
-  pname = "awsume-1password-gaiden";
-  version = "0.0.1";
+  pname = "awsume-1password";
+  version = "0.0.2";
 
-  src = fetchPypi {
-    inherit pname version;
-    sha256 = "sha256-pBwKIbH8HbIkssUSUJpgjcpIDjnlIOVx3zp4LiK1GuU=";
+  src = pkgs.fetchFromGitHub {
+    owner = "samsimpson1";
+    repo = "awsume-1password";
+    rev = "main";
+    sha256 = "RmP9bZtSf8sK48EJmCGqCW5Z/5X5dOrUWwURjbbpqiQ=";
   };
 
   dependencies = [ _1password-cli ];
 
-  meta = with lib; {
+  meta = {
     description = "1Password plugin for awsume";
   };
 }

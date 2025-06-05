@@ -1,9 +1,11 @@
 { stdenv, pkgs, ... }:
 let
+  awsumeYubikey = pkgs.callPackage ../packages/awsume-yubikey.nix { };
   awsumeOnepassword = pkgs.callPackage ../packages/awsume-1password.nix { };
   awsumeConsole = pkgs.callPackage ../packages/awsume-console.nix { };
   awsumePlugins = pkgs.callPackage ../packages/awsume-with-plugins.nix {
     plugins = [
+      awsumeYubikey
       awsumeOnepassword
       awsumeConsole
     ];
