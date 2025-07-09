@@ -32,6 +32,7 @@
               users.samsimpson.imports = [
                 ./personal/home-manager.nix
                 ../shared/neovim.nix
+                ../shared/helix.nix
               ];
             };
           }
