@@ -8,6 +8,8 @@
 python3Packages.buildPythonApplication rec {
   pname = "awsume-console-plugin";
   version = "1.2.4";
+  pyproject = true;
+  build-system = [ python3Packages.setuptools ];
 
   src = fetchPypi {
     inherit pname version;

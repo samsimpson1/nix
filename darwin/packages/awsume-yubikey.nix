@@ -7,6 +7,8 @@
 python3Packages.buildPythonApplication rec {
   pname = "awsume-yubikey-plugin";
   version = "1.2.5";
+  pyproject = true;
+  build-system = [ python3Packages.setuptools ];
 
   src = pkgs.fetchFromGitHub {
     owner = "xeger";

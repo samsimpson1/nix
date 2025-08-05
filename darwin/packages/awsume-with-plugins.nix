@@ -21,6 +21,8 @@ in
 python3Packages.buildPythonApplication rec {
   pname = "awsume";
   version = "4.5.5";
+  pyproject = true;
+  build-system = [ python3Packages.setuptools ];
 
   src = fetchFromGitHub {
     owner = "trek10inc";

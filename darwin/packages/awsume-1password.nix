@@ -7,6 +7,8 @@
 python3Packages.buildPythonApplication rec {
   pname = "awsume-1password";
   version = "0.0.2";
+  pyproject = true;
+  build-system = [ python3Packages.setuptools ];
 
   src = pkgs.fetchFromGitHub {
     owner = "samsimpson1";
