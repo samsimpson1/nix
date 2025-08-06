@@ -9,6 +9,8 @@
     homeDirectory = "/Users/samsimpson";
 
     packages = with pkgs; [
+      ansible
+      ansible-lint
       crystal
       crystalline
       gh
