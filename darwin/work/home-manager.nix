@@ -22,6 +22,7 @@ in
 
     packages = with pkgs; [
       act
+      asciinema
       bash
       kubectl
       kubectx
@@ -47,6 +48,8 @@ in
     };
     file."issues/template.md".source = ./issuemaker/template.md;
 
+    file."bin/aws-subshell.sh".source = ./config/aws-subshell.sh;
+
     stateVersion = "24.05";
   };
 
@@ -69,6 +72,9 @@ in
         . "$HOME/.cargo/env"
         alias awsume=". awsume"
 
+        setopt PROMPT_SUBST
+        autoload -U colors
+
         alias issue="$HOME/issues/issue.py"
 
         c() {
@@ -84,24 +90,7 @@ in
         }
 
         govuk_awsume() {
-          ENV_NAME="''${1}"
-          ROLE_NAME="''${2}"
-          ROLE="''${ENV_NAME}-''${ROLE_NAME}"
-
-          ASSUME_DURATION="28800"
-          if [ "''${ROLE_NAME}" = "platformengineer" ]; then
-            ASSUME_DURATION="3600"
-          fi
-
-          awsume --role-duration "''${ASSUME_DURATION}" "''${ROLE}"
-          if [ "''${ENV_NAME}" != "test" ]; then
-            kubectx "''${1}"
-            kubens apps
-          fi
-
-          export GOVUK_ENV="''${ENV_NAME}"
-          encoded_env=$(echo -n "''$GOVUK_ENV" | base64)
-          printf "\033]1337;SetUserVar=govuk_env=''${encoded_env}\007"
+          ''${HOME}/bin/aws-subshell.sh "''${1}" "''${2}"
         }
 
         e() {
@@ -124,7 +113,7 @@ in
 
     starship = {
       enable = false;
-      enableZshIntegration = true;
+      enableZshIntegration = false;
 
       settings = {
         add_newline = false;
