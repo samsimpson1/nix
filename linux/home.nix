@@ -96,6 +96,20 @@
       gp = "git push";
       gpm = "git pull origin main";
     };
+
+    initContent = ''
+      PROMPT='%F{blue}%~%f > '
+    '';
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   # Let Home Manager install and manage itself.
