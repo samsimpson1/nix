@@ -60,6 +60,12 @@ ARN: $(aws sts get-caller-identity --query Arn --output text)
 
 EOF
 
+if [ "${3}" = "--" ]; then
+  shift 3
+  "$@"
+  exit 0
+fi
+
 asciinema rec -q \
   -t "AWS Session ${GOVUK_ENVIRONMENT} ${AWS_ROLE_NAME} - ${CURRENT_DATE}" \
   -c zsh \

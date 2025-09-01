@@ -90,19 +90,25 @@ in
         }
 
         govuk_awsume() {
-          ''${HOME}/bin/aws-subshell.sh "''${1}" "''${2}"
+          ''${HOME}/bin/aws-subshell.sh $@
         }
 
         e() {
-          govuk_awsume "''${1}" "developer"
+          ENV_NAME="''${1}"
+          shift
+          govuk_awsume "''${ENV_NAME}" "developer" "$@"
         }
 
         ea() {
-          govuk_awsume "''${1}" "fulladmin"
+          ENV_NAME="''${1}"
+          shift
+          govuk_awsume "''${ENV_NAME}" "fulladmin" "$@"
         }
 
         ee() {
-          govuk_awsume "''${1}" "platformengineer"
+          ENV_NAME="''${1}"
+          shift
+          govuk_awsume "''${ENV_NAME}" "platformengineer" "$@"
         }
 
         export EDITOR="${pkgs.vim}/bin/vim"
