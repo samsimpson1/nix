@@ -101,6 +101,9 @@
       if [ -e /home/sam/.nix-profile/etc/profile.d/nix.sh ]; then . /home/sam/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
       
       PROMPT='%F{blue}%~%f > '
+
+      bindkey "^[[1;5C" forward-word
+      bindkey "^[[1;5D" backward-word
     '';
   };
 
