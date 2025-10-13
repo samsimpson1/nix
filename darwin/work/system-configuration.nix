@@ -35,7 +35,10 @@
   homebrew = {
     brewPrefix = "/opt/homebrew/bin";
     enable = true;
-    onActivation.autoUpdate = false;
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+    };
     casks = [
       {
         name = "firefox";
