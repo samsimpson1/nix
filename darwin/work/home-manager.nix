@@ -42,6 +42,8 @@ in
 
     file.".wezterm.lua".source = ./config/wezterm.lua;
 
+    file.".config/ghostty/config".source = ./config/ghostty;
+
     file."issues/issue.py" = {
       source = ./issuemaker/issue.py;
       executable = true;
