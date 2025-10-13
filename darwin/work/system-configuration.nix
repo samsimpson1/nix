@@ -55,11 +55,7 @@
         greedy = true;
       }
       {
-        name = "logseq";
-        greedy = true;
-      }
-      {
-        name = "wezterm";
+        name = "ghostty";
         greedy = true;
       }
       {
