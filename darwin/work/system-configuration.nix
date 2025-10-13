@@ -2,8 +2,6 @@
 {
   environment.systemPackages = with pkgs; [
     slack
-    vscode
-    squeezelite
   ];
 
   # nix.package = pkgs.nix;
@@ -62,6 +60,10 @@
       }
       {
         name = "wezterm";
+        greedy = true;
+      }
+      {
+        name = "visual-studio-code";
         greedy = true;
       }
     ];
