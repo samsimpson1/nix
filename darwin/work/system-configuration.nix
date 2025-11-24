@@ -63,9 +63,7 @@
         greedy = true;
       }
     ];
-    taps = [ "alphagov/gds" ];
     brews = [
-      "gds-cli"
       "prometheus"
     ];
   };
