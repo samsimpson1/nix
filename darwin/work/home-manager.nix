@@ -35,6 +35,7 @@ in
       tenv
       podman
       ripgrep
+      uv
     ];
 
     file.".awsume/config.yaml".source = ./config/awsume.yaml;
