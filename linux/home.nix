@@ -39,6 +39,7 @@
     # '')
     ansible
     ansible-lint
+    terraform
     uv
   ];
 
