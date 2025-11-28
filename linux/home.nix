@@ -39,6 +39,7 @@
     # '')
     ansible
     ansible-lint
+    awscli2
     terraform
     uv
   ];
@@ -80,7 +81,7 @@
 
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       init.defaultBranch = "main";
     };
   };
@@ -100,7 +101,7 @@
 
     initContent = ''
       if [ -e /home/sam/.nix-profile/etc/profile.d/nix.sh ]; then . /home/sam/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-      
+
       PROMPT='%F{blue}%~%f > '
 
       bindkey "^[[1;5C" forward-word
