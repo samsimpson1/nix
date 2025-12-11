@@ -8,13 +8,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    amber.url = "github:amber-lang/Amber";
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    { nixpkgs, home-manager, amber, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      amberPkg = amber.packages.${system}.default;
     in
     {
       homeConfigurations."sam" = home-manager.lib.homeManagerConfiguration {
@@ -29,6 +31,7 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
+        extraSpecialArgs = { inherit amberPkg; };
       };
     };
 }

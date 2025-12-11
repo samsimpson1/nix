@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, amberPkg, ... }:
 
 {
   nixpkgs.config = {
@@ -37,6 +37,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    amberPkg
     ansible
     ansible-lint
     awscli2
