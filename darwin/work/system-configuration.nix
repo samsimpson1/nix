@@ -43,10 +43,6 @@
         greedy = true;
       }
       {
-        name = "megasync";
-        greedy = true;
-      }
-      {
         name = "1password@beta";
         greedy = true;
       }
